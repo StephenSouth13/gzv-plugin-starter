@@ -1,0 +1,22 @@
+{
+  "id": "gzv.quick-contact",
+  "name": "Liên hệ nhanh",
+  "version": "1.0.0",
+  "description": "Nút liên hệ nổi tinh gọn: gọi điện, Zalo, email và form để lại lời nhắn — lời nhắn vào thẳng hộp thư của chủ site.",
+  "category": "contact",
+  "icon": "💬",
+  "author": { "name": "GZV Labs", "url": "https://webservice.gzv.one" },
+  "sdk": "^1.0.0",
+  "entry": "dist/plugin.js",
+  "scopes": ["site:read", "leads:create", "links:open"],
+  "slots": [{ "slot": "floating" }],
+  "hooks": ["page:view"],
+  "settings": [
+    { "key": "headline", "type": "text", "label": "Lời chào", "default": "Bạn cần tư vấn? Nhắn cho mình nhé!", "maxLength": 80 },
+    { "key": "phone", "type": "phone", "label": "Số điện thoại", "help": "Hiện nút Gọi" },
+    { "key": "zalo", "type": "phone", "label": "Số Zalo", "help": "Hiện nút Zalo" },
+    { "key": "email", "type": "text", "label": "Email", "maxLength": 120 },
+    { "key": "showForm", "type": "boolean", "label": "Hiện form để lại lời nhắn", "default": true }
+  ],
+  "budget": { "jsKb": 12 }
+}

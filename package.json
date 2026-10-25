@@ -1,0 +1,32 @@
+{
+  "name": "gzv-plugin-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Starter for GZV platform plugins — sample: Liên hệ nhanh (gzv.quick-contact).",
+  "license": "SEE LICENSE IN LICENSE",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --format=iife --minify --target=es2020 --legal-comments=none --outfile=dist/plugin.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.*",
+    "check": "node --import tsx scripts/check.mjs",
+    "package": "node --import tsx scripts/package.mjs",
+    "submit": "node scripts/submit.mjs",
+    "ci": "npm run typecheck && npm run build && npm test && npm run check"
+  },
+  "dependencies": {
+    "@gzv/plugin-sdk": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

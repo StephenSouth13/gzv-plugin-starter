@@ -1,0 +1,46 @@
+GZV Plugin Starter & SDK — Source-Available Partner License
+Copyright (c) 2026 GZV. All rights reserved.
+
+This repository (the "Software") — including @gzv/plugin-sdk, the plugin
+starter, the sample plugin "gzv.quick-contact", documentation and scripts —
+is proprietary to GZV. It is published publicly so that partners can read it.
+It is NOT open-source software, and no open-source license applies.
+
+1. Viewing. Anyone may view and read the Software for evaluation.
+
+2. Partner use. Only partners that hold a written agreement with GZV
+   ("Authorized Partners") may copy, modify and run the Software. They may do
+   so only to develop, test and submit plugins for the GZV platform. They may
+   not redistribute the Software for any other purpose.
+
+3. Platform only. Plugins built with the Software may be distributed only
+   through the GZV platform, after GZV review and approval. They may run only
+   on sites hosted by the GZV platform.
+
+4. Intellectual property. GZV keeps all right, title and interest in the
+   Software, the SDK, the platform APIs and the manifest format. Ownership of
+   plugins, and revenue sharing, are governed by the partner agreement between
+   GZV and the partner. If no such agreement says otherwise, rights in a
+   submitted plugin belong to GZV.
+
+5. Restrictions. You may not, except as permitted above or in writing by GZV:
+   (a) sublicense, sell, or redistribute the Software;
+   (b) use the Software or its interfaces to build a competing plugin
+       platform;
+   (c) attempt to bypass the sandbox, scopes, review process or security
+       controls of the GZV platform;
+   (d) remove this notice.
+
+6. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED. IN NO EVENT SHALL GZV BE LIABLE FOR ANY CLAIM, DAMAGES OR
+   OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+7. Termination. These rights end automatically if you breach this license or
+   your partner agreement ends.
+
+For partnership, contact GZV via https://webservice.gzv.one.
+
+---
+Tóm tắt (không thay thế bản tiếng Anh ở trên): Mã nguồn được công khai để xem,
+KHÔNG phải mã nguồn mở. Chỉ đối tác có thoả thuận với GZV mới được dùng/sửa,
+và chỉ để phát triển plugin cho nền tảng GZV. Sở hữu trí tuệ thuộc GZV.

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Cổng đối tác GZV / GZV Partner portal
+    url: https://webservice.gzv.one/partner/plugins
+    about: Nộp bản phát hành, xem trạng thái review và doanh thu.

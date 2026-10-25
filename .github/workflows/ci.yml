@@ -1,0 +1,67 @@
+name: plugin-ci
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+      - name: Manifest + size budget + security scan
+        run: npm run check
+      - name: Package
+        run: npm run package
+      - name: Dependency audit
+        run: npm audit --omit=dev --audit-level=high
+      - uses: actions/upload-artifact@v4
+        if: matrix.node == 22
+        with:
+          name: plugin-bundle
+          path: |
+            dist/plugin.js
+            manifest.json
+            release/
+
+  submit:
+    # Only tagged releases (v1.2.3 == manifest version) in a PARTNER's own repo are sent to GZV.
+    # Skips automatically when the GZV_PARTNER_KEY secret is not configured.
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: plugin-bundle
+      - name: Tag matches manifest version
+        run: test "v$(node -p "require('./manifest.json').version")" = "${GITHUB_REF_NAME}"
+      - name: Submit to GZV for review
+        env:
+          GZV_PARTNER_KEY: ${{ secrets.GZV_PARTNER_KEY }}
+          GZV_CHANGELOG: ${{ github.event.head_commit.message }}
+        run: |
+          if [ -z "$GZV_PARTNER_KEY" ]; then echo "GZV_PARTNER_KEY not set — skipping submit"; exit 0; fi
+          node scripts/submit.mjs
